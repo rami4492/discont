@@ -1,5 +1,5 @@
-app.controller('mainController', ['$scope', 'dataService', 'pagerService',
-    function ($scope, dataService, pagerService) {
+app.controller('mainController', ['$scope', 'dataService',
+    function ($scope, dataService) {
         $scope.submitForm = function () {
             $scope.items = $scope.links = [];
             $scope.errorResponde = "";
@@ -19,18 +19,18 @@ app.controller('mainController', ['$scope', 'dataService', 'pagerService',
                         return;
                     }
                     //create the paging
-                    $scope.pager = {};
-                    $scope.setPage = function (page) {
-                        if (page < 1 || page > $scope.pager.totalPages) {
-                            return;
-                        }
-                        // get pager object from service
-                        $scope.pager = pagerService.GetPager($scope.links.length, page, 10);
-                        // get current page of items
-                        $scope.items = $scope.links.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-                        console.log($scope.pager);
-                    }
-                    $scope.setPage(1);    // initialize to page 1
+                    // $scope.pager = {};
+                    // $scope.setPage = function (page) {
+                    //     if (page < 1 || page > $scope.pager.totalPages) {
+                    //         return;
+                    //     }
+                    //     // get pager object from service
+                    //     $scope.pager = pagerService.GetPager($scope.links.length, page, 10);
+                    //     // get current page of items
+                    //     $scope.items = $scope.links.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+                    //     console.log($scope.pager);
+                    // }
+                    // $scope.setPage(1);    // initialize to page 1
                 }, function myError(response) {
 
                     $scope.errorResponde = 'no galleries for this name';
